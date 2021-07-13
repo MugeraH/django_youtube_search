@@ -13,6 +13,11 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 from pathlib import Path
 import os
 
+from decouple import config
+# import django_heroku
+# import dj_database_url
+from decouple import config,Csv
+
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
@@ -132,6 +137,9 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+
+
+YOUTUBE_API_KEY = config('API_KEY')
 
 cloudinary.config( 
   cloud_name = "pictures-hm", 
