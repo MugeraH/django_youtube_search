@@ -4,35 +4,66 @@
 
 <div class="container mb-5">
   <header class="mt-5 text-center">
-    <h2>Search Youtube</h2>
-    <h4>Get the top nine results on Youtube for every query!</h4>
+    <h2 class="text-white">Search Youtube</h2>
+    <h4 class="text-white">
+      Get the top nine results on Youtube for every query!
+    </h4>
 
     <div class="form">
-      <input type="text" />
+      <form method="post">
+        {% csrf_token %}
+        <input type="text" name="search" class="form-control" />
 
-      <div class="buttons mt-4 mb-5">
-        <a href="#" class="btn btn-primary"> Youtube Search</a>
-        <a href="#" class="btn btn-dark"> I'm feeling lucky</a>
-      </div>
+        <div class="buttons mt-4 mb-5">
+          <button
+            type="submit"
+            name="submit"
+            value="search"
+            class="btn btn-primary"
+          >
+            Youtube Search
+          </button>
+          <button
+            type="submit"
+            name="submit"
+            value="lucky"
+            class="btn btn-dark"
+          >
+            I'm feeling lucky
+          </button>
+        </div>
+      </form>
     </div>
   </header>
 
   <section class="mt-5">
     <div class="row">
-      
-      <div class="col-md-4">
-        <div class="card" style="width: 20rem">
-          <img src="..." class="card-img-top" alt="..." />
+      {% for video in videos %}
+      <div class="col-md-4 mt-4">
+        <div class="card" style="width: 100%" height="255">
+          <img src="{{video.thumbnail}}" class="card-img-top" alt="..." />
           <div class="card-body">
-            <h5 class="card-title">title</h5>
-            <div class="card-text">
-              <a href="#" class="btn">Views</a>
-              <h4>0 mins</h4>
+            <p class="card-title">{{video.title}}</p>
+            <div
+              class="
+                card-text
+                d-flex
+                justify-content-between
+                align-items-center
+              "
+            >
+              <a
+                href="{{video.url}}"
+                target="blank"
+                class="btn btn-sm btn-outline-secondary"
+                >View</a
+              >
+              <small class="text-muted">{{video.duration}} mins</small>
             </div>
           </div>
         </div>
       </div>
-    
+      {% endfor %}
     </div>
   </section>
 </div>

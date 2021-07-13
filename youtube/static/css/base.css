@@ -4,16 +4,13 @@
   box-sizing: border-box;
 }
 
-.card-text {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+body{
+  background:rgb(22, 22, 22);
 }
 
 .form input {
-  width: 60%;
-  height: 35px;
-  padding: 10px;
+  width: 70%;
+  margin: 0 auto;
 }
 
 .row {
